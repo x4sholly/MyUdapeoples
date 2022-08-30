@@ -135,8 +135,8 @@ jobs:
     docker:
       image: amazon/aws-cli
     steps:
-      -checkout
-      -run: yum install -y tar grip
+      - checkout
+      - run: yum install -y tar grip
       - run:
           name: Ensure back-end infrastructure exists
           command: |
