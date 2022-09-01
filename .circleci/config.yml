@@ -252,6 +252,8 @@ jobs:
           key:  backend-build
       - destroy-environment:
           circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
+
+
       #- revert-migrations:
       #    circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
@@ -274,8 +276,8 @@ workflows:
       #    filters:
       #      branches:
       #        only: [master]
-      - configure-infrastructure:
-          requires: [deploy-infrastructure]
-      - run-migrations:
-          requires: [configure-infrastructure]
+      # - configure-infrastructure:
+      #     requires: [deploy-infrastructure]
+      # - run-migrations:
+      #     requires: [configure-infrastructure]
 
