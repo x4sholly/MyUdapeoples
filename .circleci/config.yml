@@ -261,6 +261,7 @@ jobs:
 workflows:
   default:
     jobs:
+      - configure-infrastructure
       # - build-frontend
       # - build-backend
       # - test-frontend:
@@ -276,7 +277,7 @@ workflows:
       # #    filters:
       # #      branches:
       # #        only: [master]
-      - configure-infrastructure
+
       #     requires: [deploy-infrastructure]
       - run-migrations:
           requires: [configure-infrastructure]
