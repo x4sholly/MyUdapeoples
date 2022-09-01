@@ -254,3 +254,10 @@ workflows:
           filters:
             branches:
               only: [master]
+      # - prometheus-node-exporter:
+      #     requires: [deploy-infrastructure]
+      - configure-infrastructure:
+          requires: [deploy-infrastructure]
+      - run-migrations:
+          requires: [configure-infrastructure]
+
