@@ -322,7 +322,7 @@ jobs:
             cd frontend
             npm run build
             npm update
-            aws s3 cp dist s3://udapeople-sholaa-${CIRCLE_WORKFLOW_ID:0:7} --recursive
+            aws s3 cp dist s3://udapeople-6472085-${CIRCLE_WORKFLOW_ID:0:7} --recursive
       - destroy-environment:
           circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
       # - revert-migrations: 
