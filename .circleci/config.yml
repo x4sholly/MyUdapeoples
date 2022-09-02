@@ -211,7 +211,7 @@ jobs:
       - install_awscli
       - install_ansible
       - add_ssh_keys:
-          fingerprints: ["33:87:e4:04:43:16:dd:47:8f:24:16:c4:d8:38:2c:5a"]
+          fingerprints: ["b6:b4:1d:59:ed:e9:32:45:fb:62:ef:0c:b1:fb:02:46"]
       - attach_workspace:
           at: ~/
       - run:
@@ -248,9 +248,9 @@ jobs:
             then
               curl https://kvdb.io/MpvRJw2ZWY15Pfx2T4XCB/migration_${CIRCLE_WORKFLOW_ID:0:7} -d  '1'
             fi
-      - save_cache:
-          paths:  [backend/node_modules]
-          key:  backend-build
+      # - save_cache:
+      #     paths:  [backend/node_modules]
+      #     key:  backend-build
       - destroy-environment:
           circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
