@@ -248,9 +248,9 @@ jobs:
             then
               curl https://kvdb.io/C5WRVAbjmRkg861XpQ5mW/migration_${CIRCLE_WORKFLOW_ID:0:7} -d  '1'
             fi
-      - save_cache:
-          paths:  [backend/node_modules]
-          key:  backend-build
+      # - save_cache:
+      #     paths:  [backend/node_modules]
+      #     key:  backend-build
       - destroy-environment:
           circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
