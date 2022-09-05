@@ -260,13 +260,15 @@ jobs:
 
   configure-infrastructure:
     docker:
-      - image:  cimg/python:3.10
+      - image:  python3.7-alpine3.16
     steps:
       - checkout
-      - install_awscli
-      - install_ansible
       - add_ssh_keys:
           fingerprints: ["b6:b4:1d:59:ed:e9:32:45:fb:62:ef:0c:b1:fb:02:46"]
+      - run: 
+          name: Install dependencies
+          command: |
+            apk add --update --no-cache tar gzip ansible awscli
       - attach_workspace:
           at: ~/
       - run:
@@ -275,7 +277,27 @@ jobs:
             cd .circleci/ansible
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy-environment:
-          circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
+          circle_workflow_id: ${CIRCLE_WORKFLOW_ID:0:7}
+
+
+
+
+    #   - image:  cimg/python:3.10
+    # steps:
+    #   - checkout
+    #   - install_awscli
+    #   - install_ansible
+    #   - add_ssh_keys:
+    #       fingerprints: ["b6:b4:1d:59:ed:e9:32:45:fb:62:ef:0c:b1:fb:02:46"]
+    #   - attach_workspace:
+    #       at: ~/
+    #   - run:
+    #       name: Run Playbook and Configure server
+    #       command: |
+    #         cd .circleci/ansible
+    #         ansible-playbook -i inventory.txt configure-server.yml
+    #   - destroy-environment:
+    #       circle_workflow_id: "${CIRCLE_WORKFLOW_ID:0:7}"
 
   run-migrations:
     docker:
